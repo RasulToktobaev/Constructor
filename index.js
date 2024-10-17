@@ -9,3 +9,10 @@ const model = [
         ]
     }
 ]
+
+let site = document.querySelector('#site');
+
+model.forEach(block => {
+    console.log(block);
+
+})
