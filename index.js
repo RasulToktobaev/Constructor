@@ -25,6 +25,16 @@ model.forEach(block => {
             </div>
         </div>
         `
+    } else if (block.type === 'text') {
+        html = `
+                <div class="row">
+            <div class="col-sm">
+                <p>${block.value}</p>
+            </div>
+        </div>
+        `
+    } else if (block.type === 'columns') {
+
     }
 
 })
