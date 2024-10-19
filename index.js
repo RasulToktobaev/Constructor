@@ -12,7 +12,19 @@ const model = [
 
 let site = document.querySelector('#site');
 
+
 model.forEach(block => {
-    console.log(block);
+
+    let html = ''
+
+    if (block.type === 'title') {
+        html = `
+            <div class="row">
+            <div class="col-sm">
+                <h1>Hello world</h1>
+            </div>
+        </div>
+        `
+    }
 
 })
