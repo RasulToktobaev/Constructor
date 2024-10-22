@@ -37,5 +37,8 @@ model.forEach(block => {
 
     }
 
+    site.incertAdjacentHTML('beforeend', html)
+
+
 })
 
