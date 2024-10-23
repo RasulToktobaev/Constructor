@@ -5,7 +5,7 @@ const model = [
         type: 'columns', value: [
             '111111',
             '222222',
-            '333333'
+            '333333',
         ]
     }
 ]
@@ -52,17 +52,14 @@ function text(block) {
 }
 
 function columns(block) {
+    const html = block.value.map(item => {
+        return `
+        <div class="col-sm">${item}</div>
+        `
+    })
     return `
     <div class="row">
-            <div class="col-sm">
-                Lorem ipsum dolor sit amet.
-            </div>
-            <div class="col-sm">
-                Lorem ipsum dolor sit amet.
-            </div>
-            <div class="col-sm">
-                Lorem ipsum dolor sit amet.
-            </div>
+        ${html.join('')}
         </div>
     `
 }
