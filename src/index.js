@@ -1,4 +1,5 @@
 import { model } from "./model";
+import './styles/main.css';
 import { columns, image, text, title } from './templates';
 
 
