@@ -1,15 +1,5 @@
-const model = [
-    { type: 'title', value: 'Hello World from Js' },
-    { type: 'text', value: 'This is text in second block' },
-    {
-        type: 'columns', value: [
-            '111111',
-            '222222',
-            '333333',
-        ]
-    },
-    { type: 'image', value: './assets/image.png' }
-]
+import { model } from "./model";
+
 
 let site = document.querySelector('#site');
 
