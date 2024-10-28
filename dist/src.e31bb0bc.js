@@ -137,24 +137,16 @@ var model = exports.model = [{
   type: 'image',
   value: './assets/image.png'
 }];
-},{}],"index.js":[function(require,module,exports) {
+},{}],"templates.js":[function(require,module,exports) {
 "use strict";
 
-var _model = require("./model");
-var site = document.querySelector('#site');
-_model.model.forEach(function (block) {
-  var html = '';
-  if (block.type === 'title') {
-    html = title(block);
-  } else if (block.type === 'text') {
-    html = text(block);
-  } else if (block.type === 'columns') {
-    html = columns(block);
-  } else if (block.type === 'image') {
-    html = image(block);
-  }
-  site.insertAdjacentHTML('beforeEnd', html);
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
+exports.columns = columns;
+exports.image = image;
+exports.text = text;
+exports.title = title;
 function title(block) {
   return "\n            <div class=\"row\">\n            <div class=\"col-sm\">\n                <h1>".concat(block.value, "</h1>\n            </div>\n        </div>\n        ");
 }
@@ -170,7 +162,26 @@ function columns(block) {
 function image(block) {
   return "\n    <div class=\"row\">\n    <img  src = \"".concat(block.value, "\"/>\n    </div>\n    ");
 }
-},{"./model":"model.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _model = require("./model");
+var _templates = require("./templates");
+var site = document.querySelector('#site');
+_model.model.forEach(function (block) {
+  var html = '';
+  if (block.type === 'title') {
+    html = (0, _templates.title)(block);
+  } else if (block.type === 'text') {
+    html = (0, _templates.text)(block);
+  } else if (block.type === 'columns') {
+    html = (0, _templates.columns)(block);
+  } else if (block.type === 'image') {
+    html = (0, _templates.image)(block);
+  }
+  site.insertAdjacentHTML('beforeEnd', html);
+});
+},{"./model":"model.js","./templates":"templates.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
