@@ -198,10 +198,7 @@ module.hot.accept(reloadCSS);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.columns = columns;
-exports.image = image;
-exports.text = text;
-exports.title = title;
+exports.templates = void 0;
 function title(block) {
   return "\n            <div class=\"row\">\n            <div class=\"col-sm\">\n                <h1>".concat(block.value, "</h1>\n            </div>\n        </div>\n        ");
 }
@@ -217,6 +214,12 @@ function columns(block) {
 function image(block) {
   return "\n    <div class=\"row\">\n    <img  src = \"".concat(block.value, "\"/>\n    </div>\n    ");
 }
+var templates = exports.templates = {
+  text: text,
+  title: title,
+  columns: columns,
+  image: image
+};
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -225,17 +228,10 @@ require("./styles/main.css");
 var _templates = require("./templates");
 var site = document.querySelector('#site');
 _model.model.forEach(function (block) {
-  var html = '';
-  if (block.type === 'title') {
-    html = (0, _templates.title)(block);
-  } else if (block.type === 'text') {
-    html = (0, _templates.text)(block);
-  } else if (block.type === 'columns') {
-    html = (0, _templates.columns)(block);
-  } else if (block.type === 'image') {
-    html = (0, _templates.image)(block);
+  var toHTML = _templates.templates[block.type];
+  if (toHTML) {
+    site.insertAdjacentHTML('beforeEnd', toHTML(block));
   }
-  site.insertAdjacentHTML('beforeEnd', html);
 });
 },{"./model":"model.js","./styles/main.css":"styles/main.css","./templates":"templates.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

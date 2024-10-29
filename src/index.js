@@ -1,6 +1,6 @@
 import { model } from "./model";
 import './styles/main.css';
-import { columns, image, text, title } from './templates';
+import { templates } from './templates';
 
 
 let site = document.querySelector('#site');
@@ -8,21 +8,11 @@ let site = document.querySelector('#site');
 
 model.forEach(block => {
 
-    let html = ''
+    const toHTML = templates[block.type]
 
-    if (block.type === 'title') {
-        html = title(block)
-    } else if (block.type === 'text') {
-        html = text(block)
-    } else if (block.type === 'columns') {
-        html = columns(block)
+    if (toHTML) {
+        site.insertAdjacentHTML('beforeEnd', toHTML(block))
     }
-    else if (block.type === 'image') {
-        html = image(block)
-    }
-
-    site.insertAdjacentHTML('beforeEnd', html)
-
 
 })
 
