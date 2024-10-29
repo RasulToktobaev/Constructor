@@ -192,27 +192,42 @@ module.exports = reloadCSS;
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"templates.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"utils.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.col = col;
+exports.row = row;
+function row(content) {
+  return "<div class=\"row\">".concat(content, "</div>");
+}
+function col(content) {
+  return "<div class=\"col-sm\">".concat(content, "</div>");
+}
+},{}],"templates.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.templates = void 0;
+var _utils = require("./utils");
 function title(block) {
-  return "\n            <div class=\"row\">\n            <div class=\"col-sm\">\n                <h1>".concat(block.value, "</h1>\n            </div>\n        </div>\n        ");
+  return (0, _utils.row)((0, _utils.col)("  <h1>".concat(block.value, "</h1>")));
 }
 function text(block) {
-  return "\n                <div class=\"row\">\n            <div class=\"col-sm\">\n                <p>".concat(block.value, "</p>\n            </div>\n        </div>\n        ");
+  return (0, _utils.row)((0, _utils.col)("    <p>".concat(block.value, "</p>")));
 }
 function columns(block) {
   var html = block.value.map(function (item) {
-    return "\n        <div class=\"col-sm\">".concat(item, "</div>\n        ");
+    return (0, _utils.col)(item);
   });
-  return "\n    <div class=\"row\">\n        ".concat(html.join(''), "\n        </div>\n    ");
+  return (0, _utils.row)(" ".concat(html.join('')));
 }
 function image(block) {
-  return "\n    <div class=\"row\">\n    <img  src = \"".concat(block.value, "\"/>\n    </div>\n    ");
+  return (0, _utils.row)("<img  src = \"".concat(block.value, "\"/>"));
 }
 var templates = exports.templates = {
   text: text,
@@ -220,7 +235,7 @@ var templates = exports.templates = {
   columns: columns,
   image: image
 };
-},{}],"index.js":[function(require,module,exports) {
+},{"./utils":"utils.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _model = require("./model");
