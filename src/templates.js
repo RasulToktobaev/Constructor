@@ -1,8 +1,8 @@
 import { col, row } from './utils'
 
 function title(block) {
-    const { tag = 'h1', styles } = block.options
 
+    const { tag = 'h1', styles } = block.options
 
     return row(col(`  <${tag}>${block.value}</${tag}>`), styles)
 }
