@@ -130,7 +130,11 @@ var _image = _interopRequireDefault(require("./assets/image.png"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var model = exports.model = [{
   type: 'title',
-  value: 'Hello World from Java Script'
+  value: 'Конструктор сайтов ',
+  options: {
+    tag: 'h2',
+    styles: "background: linear-gradient(90deg, #0000ff, #8a2be2); color: #fff; text-align: center; padding:1.5rem"
+  }
 }, {
   type: 'text',
   value: 'This is text in second block'
@@ -205,7 +209,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.col = col;
 exports.row = row;
 function row(content) {
-  return "<div class=\"row\">".concat(content, "</div>");
+  var styles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  return "<div class=\"row\" style = \"".concat(styles, "\">").concat(content, "</div>");
 }
 function col(content) {
   return "<div class=\"col-sm\">".concat(content, "</div>");
@@ -219,7 +224,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.templates = void 0;
 var _utils = require("./utils");
 function title(block) {
-  return (0, _utils.row)((0, _utils.col)("  <h1>".concat(block.value, "</h1>")));
+  var _block$options$tag;
+  var tag = (_block$options$tag = block.options.tag) !== null && _block$options$tag !== void 0 ? _block$options$tag : 'h1';
+  var styles = block.options.styles;
+  return (0, _utils.row)((0, _utils.col)("  <".concat(tag, ">").concat(block.value, "</").concat(tag, ">")), styles);
 }
 function text(block) {
   return (0, _utils.row)((0, _utils.col)("    <p>".concat(block.value, "</p>")));
