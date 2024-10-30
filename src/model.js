@@ -1,3 +1,6 @@
+import image from './assets/image.png'
+
+
 export const model = [
     { type: 'title', value: 'Hello World from Java Script' },
     { type: 'text', value: 'This is text in second block' },
@@ -8,5 +11,5 @@ export const model = [
             '333333',
         ]
     },
-    { type: 'image', value: './assets/image.png' }
+    { type: 'image', value: image }
 ]

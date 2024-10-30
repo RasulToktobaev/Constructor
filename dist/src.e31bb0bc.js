@@ -117,13 +117,17 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"model.js":[function(require,module,exports) {
+})({"assets/image.png":[function(require,module,exports) {
+module.exports = "/image.90ac9039.png";
+},{}],"model.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.model = void 0;
+var _image = _interopRequireDefault(require("./assets/image.png"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var model = exports.model = [{
   type: 'title',
   value: 'Hello World from Java Script'
@@ -135,9 +139,9 @@ var model = exports.model = [{
   value: ['111111', '222222', '333333']
 }, {
   type: 'image',
-  value: './assets/image.png'
+  value: _image.default
 }];
-},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./assets/image.png":"assets/image.png"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -221,9 +225,7 @@ function text(block) {
   return (0, _utils.row)((0, _utils.col)("    <p>".concat(block.value, "</p>")));
 }
 function columns(block) {
-  var html = block.value.map(function (item) {
-    return (0, _utils.col)(item);
-  });
+  var html = block.value.map(_utils.col);
   return (0, _utils.row)(" ".concat(html.join('')));
 }
 function image(block) {
@@ -273,7 +275,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62310" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50144" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

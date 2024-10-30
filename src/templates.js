@@ -13,10 +13,8 @@ function text(block) {
 
 function columns(block) {
 
+    const html = block.value.map(col)
 
-    const html = block.value.map(item => {
-        return col(item)
-    })
     return row(` ${html.join('')}`)
 }
 
