@@ -212,6 +212,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.col = col;
+exports.css = css;
 exports.row = row;
 function row(content) {
   var styles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -219,6 +220,14 @@ function row(content) {
 }
 function col(content) {
   return "<div class=\"col-sm\">".concat(content, "</div>");
+}
+function css() {
+  var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var keys = Object.keys(styles);
+  var array = keys.map(function (key) {
+    return "".concat(key, ": ").concat(styles[key]);
+  });
+  return array.join(';');
 }
 },{}],"templates.js":[function(require,module,exports) {
 "use strict";
@@ -233,7 +242,7 @@ function title(block) {
     _block$options$tag = _block$options.tag,
     tag = _block$options$tag === void 0 ? 'h1' : _block$options$tag,
     styles = _block$options.styles;
-  return (0, _utils.row)((0, _utils.col)("  <".concat(tag, ">").concat(block.value, "</").concat(tag, ">")), styles);
+  return (0, _utils.row)((0, _utils.col)("  <".concat(tag, ">").concat(block.value, "</").concat(tag, ">")), (0, _utils.css)(styles));
 }
 function text(block) {
   return (0, _utils.row)((0, _utils.col)("    <p>".concat(block.value, "</p>")));
@@ -289,7 +298,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50144" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60534" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
