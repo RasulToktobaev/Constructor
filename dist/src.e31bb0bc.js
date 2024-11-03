@@ -268,14 +268,14 @@ function title(block) {
   return (0, _utils.row)((0, _utils.col)("  <".concat(tag, ">").concat(block.value, "</").concat(tag, ">")), (0, _utils.css)(styles));
 }
 function text(block) {
-  return (0, _utils.row)((0, _utils.col)("    <p>".concat(block.value, "</p>")));
+  return (0, _utils.row)((0, _utils.col)("    <p>".concat(block.value, "</p>")), (0, _utils.css)(block.options.styles));
 }
 function columns(block) {
   var html = block.value.map(_utils.col);
-  return (0, _utils.row)(" ".concat(html.join('')));
+  return (0, _utils.row)(" ".concat(html.join('')), (0, _utils.css)(block.options.styles));
 }
 function image(block) {
-  return (0, _utils.row)("<img  src = \"".concat(block.value, "\"/>"));
+  return (0, _utils.row)("<img  src = \"".concat(block.value, "\"/>"), (0, _utils.css)(block.options.styles));
 }
 var templates = exports.templates = {
   text: text,
