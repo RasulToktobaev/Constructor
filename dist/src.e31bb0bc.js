@@ -128,7 +128,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.model = void 0;
 var _image = _interopRequireDefault(require("./assets/image.png"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-var text = "\u041A\u0440\u0443\u0442\u043E\u0439 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440 \u043A\u043E\u0434\u0430 \u044D\u0442\u043E : <a href=\"https://code.visualstudio.com/\">Visual Studio Code</a>";
+var text = "\u041A\u0440\u0443\u0442\u043E\u0439 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440 \u043A\u043E\u0434\u0430 \u044D\u0442\u043E : <a href=\"https://code.visualstudio.com/\"  target = \"_blank\">Visual Studio Code</a>";
 var model = exports.model = [{
   type: 'title',
   value: 'Конструктор сайтов ',
@@ -142,12 +142,6 @@ var model = exports.model = [{
     }
   }
 }, {
-  type: 'text',
-  value: 'This is text in second block'
-}, {
-  type: 'columns',
-  value: ['111111', '222222', '333333']
-}, {
   type: 'image',
   value: _image.default,
   options: {
@@ -156,6 +150,27 @@ var model = exports.model = [{
       height: '40px',
       objectFit: 'cover',
       borderRadius: '10px'
+    }
+  }
+}, {
+  type: 'text',
+  value: text,
+  options: {
+    styles: {
+      fontSize: '1.2rem',
+      lineHeight: '1.5',
+      fontWeight: 'bold',
+      color: 'blue'
+    }
+  }
+}, {
+  type: 'columns',
+  value: ["Visual Studio Code — редактор исходного кода ", " разработанный Microsoft для Windows, Linux и macOS.", " Позиционируется как «лёгкий» редактор кода для кроссплатформенной разработки веб- и облачных приложений."],
+  options: {
+    styles: {
+      background: '#f2f2f2',
+      padding: '1rem',
+      "font-weight": "bold"
     }
   }
 }];

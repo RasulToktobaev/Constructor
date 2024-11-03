@@ -1,7 +1,7 @@
 import image from './assets/image.png'
 
 
-const text = `Крутой редактор кода это : <a href="https://code.visualstudio.com/">Visual Studio Code</a>`
+const text = `Крутой редактор кода это : <a href="https://code.visualstudio.com/"  target = "_blank">Visual Studio Code</a>`
 
 export const model = [
     {
@@ -15,14 +15,7 @@ export const model = [
             }
         }
     },
-    { type: 'text', value: 'This is text in second block' },
-    {
-        type: 'columns', value: [
-            '111111',
-            '222222',
-            '333333',
-        ]
-    },
+
     {
         type: 'image', value: image, options: {
             styles: {
@@ -32,5 +25,33 @@ export const model = [
                 borderRadius: '10px'
             }
         }
-    }
+    },
+
+    {
+        type: 'text', value: text, options: {
+            styles: {
+                fontSize: '1.2rem',
+                lineHeight: '1.5',
+                fontWeight: 'bold',
+                color: 'blue'
+            }
+        }
+    },
+
+    {
+        type: 'columns', value: [
+            "Visual Studio Code — редактор исходного кода ",
+            " разработанный Microsoft для Windows, Linux и macOS.",
+            " Позиционируется как «лёгкий» редактор кода для кроссплатформенной разработки веб- и облачных приложений."
+
+        ], options: {
+            styles: {
+                background: '#f2f2f2',
+                padding: '1rem',
+                "font-weight": "bold",
+
+            }
+        }
+    },
+
 ]
