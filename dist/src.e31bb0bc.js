@@ -128,7 +128,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.model = void 0;
 var _image = _interopRequireDefault(require("./assets/image.png"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-var text = "\u041A\u0440\u0443\u0442\u043E\u0439 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440 \u043A\u043E\u0434\u0430 \u044D\u0442\u043E : <a href=\"\"></a>";
+var text = "\u041A\u0440\u0443\u0442\u043E\u0439 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440 \u043A\u043E\u0434\u0430 \u044D\u0442\u043E : <a href=\"https://code.visualstudio.com/\">Visual Studio Code</a>";
 var model = exports.model = [{
   type: 'title',
   value: 'Конструктор сайтов ',
@@ -152,8 +152,8 @@ var model = exports.model = [{
   value: _image.default,
   options: {
     styles: {
-      width: '10px',
-      height: 'auto',
+      width: '60px',
+      height: '40px',
       objectFit: 'cover',
       borderRadius: '10px'
     }

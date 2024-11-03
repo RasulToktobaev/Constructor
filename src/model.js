@@ -1,7 +1,7 @@
 import image from './assets/image.png'
 
 
-const text = `Крутой редактор кода это : <a href=""></a>`
+const text = `Крутой редактор кода это : <a href="https://code.visualstudio.com/">Visual Studio Code</a>`
 
 export const model = [
     {
@@ -26,8 +26,8 @@ export const model = [
     {
         type: 'image', value: image, options: {
             styles: {
-                width: '10px',
-                height: 'auto',
+                width: '60px',
+                height: '40px',
                 objectFit: 'cover',
                 borderRadius: '10px'
             }
