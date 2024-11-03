@@ -1,6 +1,8 @@
 import image from './assets/image.png'
 
 
+const text = `Крутой редактор кода это : <a href=""></a>`
+
 export const model = [
     {
         type: 'title', value: 'Конструктор сайтов ', options: {
@@ -21,5 +23,14 @@ export const model = [
             '333333',
         ]
     },
-    { type: 'image', value: image }
+    {
+        type: 'image', value: image, options: {
+            styles: {
+                width: '10px',
+                height: 'auto',
+                objectFit: 'cover',
+                borderRadius: '10px'
+            }
+        }
+    }
 ]

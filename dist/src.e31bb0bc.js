@@ -128,6 +128,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.model = void 0;
 var _image = _interopRequireDefault(require("./assets/image.png"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+var text = "\u041A\u0440\u0443\u0442\u043E\u0439 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440 \u043A\u043E\u0434\u0430 \u044D\u0442\u043E : <a href=\"\"></a>";
 var model = exports.model = [{
   type: 'title',
   value: 'Конструктор сайтов ',
@@ -148,7 +149,15 @@ var model = exports.model = [{
   value: ['111111', '222222', '333333']
 }, {
   type: 'image',
-  value: _image.default
+  value: _image.default,
+  options: {
+    styles: {
+      width: '10px',
+      height: 'auto',
+      objectFit: 'cover',
+      borderRadius: '10px'
+    }
+  }
 }];
 },{"./assets/image.png":"assets/image.png"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
@@ -223,13 +232,6 @@ function col(content) {
 }
 function css() {
   var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  // const keys = Object.keys(styles)
-  // const array = keys.map(key => {
-  //     return `${key}: ${styles[key]}`
-  // })
-
-  // return array.join(';')
-
   var toString = function toString(key) {
     return "".concat(key, ": ").concat(styles[key]);
   };
@@ -304,7 +306,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60536" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57518" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
