@@ -49,6 +49,7 @@ export const model = [
                 background: '#f2f2f2',
                 padding: '1rem',
                 "font-weight": "bold",
+                color: 'red'
 
             }
         }
