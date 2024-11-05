@@ -13,49 +13,41 @@ export const model = [
             padding: '1.5rem'
         }
     }),
-
-    {
-        type: 'image', value: image, options: {
-            styles: {
-                width: '100px',
-                height: '40px',
-                objectFit: 'cover',
-                borderRadius: '10px'
-            },
-            imageStyle: {
-                width: '600px',
-                height: "auto"
-            },
-            alt: 'Это картинка'
+    new Block('image', image, {
+        styles: {
+            width: '100px',
+            height: '40px',
+            objectFit: 'cover',
+            borderRadius: '10px'
+        },
+        imageStyle: {
+            width: '600px',
+            height: "auto"
+        },
+        alt: 'Это картинка'
+    }),
+    new Block('text', text, {
+        styles: {
+            fontSize: '1.2rem',
+            lineHeight: '1.5',
+            fontWeight: 'bold',
+            color: 'blue'
         }
-    },
+    }), ,
+    new Block('columns', [
+        "Visual Studio Code — редактор исходного кода ",
+        " разработанный Microsoft для Windows, Linux и macOS.",
+        " Позиционируется как «лёгкий» редактор кода для кроссплатформенной разработки веб- и облачных приложений."
 
-    {
-        type: 'text', value: text, options: {
-            styles: {
-                fontSize: '1.2rem',
-                lineHeight: '1.5',
-                fontWeight: 'bold',
-                color: 'blue'
-            }
+    ], {
+        styles: {
+            background: '#f2f2f2',
+            padding: '1rem',
+            "font-weight": "bold",
+            color: 'red'
+
         }
-    },
+    }),
 
-    {
-        type: 'columns', value: [
-            "Visual Studio Code — редактор исходного кода ",
-            " разработанный Microsoft для Windows, Linux и macOS.",
-            " Позиционируется как «лёгкий» редактор кода для кроссплатформенной разработки веб- и облачных приложений."
-
-        ], options: {
-            styles: {
-                background: '#f2f2f2',
-                padding: '1rem',
-                "font-weight": "bold",
-                color: 'red'
-
-            }
-        }
-    },
 
 ]

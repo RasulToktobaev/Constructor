@@ -120,7 +120,24 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"assets/image.png":[function(require,module,exports) {
 module.exports = "/image.90ac9039.png";
 },{}],"classes/blocks.js":[function(require,module,exports) {
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Block = void 0;
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+var Block = exports.Block = /*#__PURE__*/_createClass(function Block(type, value, options) {
+  _classCallCheck(this, Block);
+  this.type = type;
+  this.value = value;
+  this.options = options;
+});
 },{}],"model.js":[function(require,module,exports) {
 "use strict";
 
@@ -140,45 +157,33 @@ var model = exports.model = [new _blocks.Block('title', 'Конструктор 
     textAlign: 'center',
     padding: '1.5rem'
   }
-}), {
-  type: 'image',
-  value: _image.default,
-  options: {
-    styles: {
-      width: '100px',
-      height: '40px',
-      objectFit: 'cover',
-      borderRadius: '10px'
-    },
-    imageStyle: {
-      width: '600px',
-      height: "auto"
-    },
-    alt: 'Это картинка'
+}), new _blocks.Block('image', _image.default, {
+  styles: {
+    width: '100px',
+    height: '40px',
+    objectFit: 'cover',
+    borderRadius: '10px'
+  },
+  imageStyle: {
+    width: '600px',
+    height: "auto"
+  },
+  alt: 'Это картинка'
+}), new _blocks.Block('text', text, {
+  styles: {
+    fontSize: '1.2rem',
+    lineHeight: '1.5',
+    fontWeight: 'bold',
+    color: 'blue'
   }
-}, {
-  type: 'text',
-  value: text,
-  options: {
-    styles: {
-      fontSize: '1.2rem',
-      lineHeight: '1.5',
-      fontWeight: 'bold',
-      color: 'blue'
-    }
+}),, new _blocks.Block('columns', ["Visual Studio Code — редактор исходного кода ", " разработанный Microsoft для Windows, Linux и macOS.", " Позиционируется как «лёгкий» редактор кода для кроссплатформенной разработки веб- и облачных приложений."], {
+  styles: {
+    background: '#f2f2f2',
+    padding: '1rem',
+    "font-weight": "bold",
+    color: 'red'
   }
-}, {
-  type: 'columns',
-  value: ["Visual Studio Code — редактор исходного кода ", " разработанный Microsoft для Windows, Linux и macOS.", " Позиционируется как «лёгкий» редактор кода для кроссплатформенной разработки веб- и облачных приложений."],
-  options: {
-    styles: {
-      background: '#f2f2f2',
-      padding: '1rem',
-      "font-weight": "bold",
-      color: 'red'
-    }
-  }
-}];
+})];
 },{"./assets/image.png":"assets/image.png","./classes/blocks":"classes/blocks.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
@@ -301,6 +306,7 @@ require("./styles/main.css");
 var _templates = require("./templates");
 var site = document.querySelector('#site');
 _model.model.forEach(function (block) {
+  console.log(block);
   var toHTML = _templates.templates[block.type];
   if (toHTML) {
     site.insertAdjacentHTML('beforeEnd', toHTML(block));
