@@ -1,20 +1,18 @@
 import image from './assets/image.png'
-
+import { Block } from './classes/blocks'
 
 const text = `Крутой редактор кода это : <a href="https://code.visualstudio.com/"  target = "_blank">Visual Studio Code</a>`
 
 export const model = [
-    {
-        type: 'title', value: 'Конструктор сайтов ', options: {
-            tag: 'h2',
-            styles: {
-                background: 'linear-gradient(90deg, #0000ff, #8a2be2)',
-                color: '#fff',
-                textAlign: 'center',
-                padding: '1.5rem'
-            }
+    new Block('title', 'Конструктор сайтов ', {
+        tag: 'h2',
+        styles: {
+            background: 'linear-gradient(90deg, #0000ff, #8a2be2)',
+            color: '#fff',
+            textAlign: 'center',
+            padding: '1.5rem'
         }
-    },
+    }),
 
     {
         type: 'image', value: image, options: {

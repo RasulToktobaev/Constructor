@@ -119,6 +119,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"assets/image.png":[function(require,module,exports) {
 module.exports = "/image.90ac9039.png";
+},{}],"classes/blocks.js":[function(require,module,exports) {
+
 },{}],"model.js":[function(require,module,exports) {
 "use strict";
 
@@ -127,21 +129,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.model = void 0;
 var _image = _interopRequireDefault(require("./assets/image.png"));
+var _blocks = require("./classes/blocks");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var text = "\u041A\u0440\u0443\u0442\u043E\u0439 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440 \u043A\u043E\u0434\u0430 \u044D\u0442\u043E : <a href=\"https://code.visualstudio.com/\"  target = \"_blank\">Visual Studio Code</a>";
-var model = exports.model = [{
-  type: 'title',
-  value: 'Конструктор сайтов ',
-  options: {
-    tag: 'h2',
-    styles: {
-      background: 'linear-gradient(90deg, #0000ff, #8a2be2)',
-      color: '#fff',
-      textAlign: 'center',
-      padding: '1.5rem'
-    }
+var model = exports.model = [new _blocks.Block('title', 'Конструктор сайтов ', {
+  tag: 'h2',
+  styles: {
+    background: 'linear-gradient(90deg, #0000ff, #8a2be2)',
+    color: '#fff',
+    textAlign: 'center',
+    padding: '1.5rem'
   }
-}, {
+}), {
   type: 'image',
   value: _image.default,
   options: {
@@ -180,7 +179,7 @@ var model = exports.model = [{
     }
   }
 }];
-},{"./assets/image.png":"assets/image.png"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./assets/image.png":"assets/image.png","./classes/blocks":"classes/blocks.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
