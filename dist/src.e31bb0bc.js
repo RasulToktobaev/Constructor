@@ -285,8 +285,8 @@ function image(block) {
     _block$options2$alt = _block$options2.alt,
     alt = _block$options2$alt === void 0 ? '' : _block$options2$alt,
     styles = _block$options2.styles,
-    imageStyle = _block$options2.imageStyle;
-  return (0, _utils.row)("<img  src=\"".concat(block.value, "\" alt=\"").concat(alt, "\" style=\"").concat((0, _utils.css)(imageStyle), "\"/>"), (0, _utils.css)(styles));
+    is = _block$options2.imageStyle;
+  return (0, _utils.row)("<img  src=\"".concat(block.value, "\" alt=\"").concat(alt, "\" style=\"").concat((0, _utils.css)(is), "\"/>"), (0, _utils.css)(styles));
 }
 var templates = exports.templates = {
   text: text,
