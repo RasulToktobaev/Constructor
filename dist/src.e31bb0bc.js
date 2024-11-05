@@ -146,11 +146,16 @@ var model = exports.model = [{
   value: _image.default,
   options: {
     styles: {
-      width: '60px',
+      width: '100px',
       height: '40px',
       objectFit: 'cover',
       borderRadius: '10px'
-    }
+    },
+    imageStyle: {
+      width: '600px',
+      height: "auto"
+    },
+    alt: 'Это картинка'
   }
 }, {
   type: 'text',
@@ -276,7 +281,12 @@ function columns(block) {
   return (0, _utils.row)(" ".concat(html.join('')), (0, _utils.css)(block.options.styles));
 }
 function image(block) {
-  return (0, _utils.row)("<img  src = \"".concat(block.value, "\"/>"), (0, _utils.css)(block.options.styles));
+  var _block$options2 = block.options,
+    _block$options2$alt = _block$options2.alt,
+    alt = _block$options2$alt === void 0 ? '' : _block$options2$alt,
+    styles = _block$options2.styles,
+    imageStyle = _block$options2.imageStyle;
+  return (0, _utils.row)("<img  src=\"".concat(block.value, "\" alt=\"").concat(alt, "\" style=\"").concat((0, _utils.css)(imageStyle), "\"/>"), (0, _utils.css)(styles));
 }
 var templates = exports.templates = {
   text: text,

@@ -19,11 +19,16 @@ export const model = [
     {
         type: 'image', value: image, options: {
             styles: {
-                width: '60px',
+                width: '100px',
                 height: '40px',
                 objectFit: 'cover',
                 borderRadius: '10px'
-            }
+            },
+            imageStyle: {
+                width: '600px',
+                height: "auto"
+            },
+            alt: 'Это картинка'
         }
     },
 
