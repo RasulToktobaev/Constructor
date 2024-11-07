@@ -1,10 +1,10 @@
 import image from './assets/image.png'
-import { Block } from './classes/blocks'
+import { ColumnsBlock, ImageBlock, TextBlock, TitleBlock } from './classes/blocks'
 
 const text = `Крутой редактор кода это : <a href="https://code.visualstudio.com/"  target = "_blank">Visual Studio Code</a>`
 
 export const model = [
-    new Block('title', 'Конструктор сайтов ', {
+    new TitleBlock('Конструктор сайтов ', {
         tag: 'h2',
         styles: {
             background: 'linear-gradient(90deg, #0000ff, #8a2be2)',
@@ -13,7 +13,7 @@ export const model = [
             padding: '1.5rem'
         }
     }),
-    new Block('image', image, {
+    new ImageBlock(image, {
         styles: {
             width: '100px',
             height: '40px',
@@ -26,7 +26,7 @@ export const model = [
         },
         alt: 'Это картинка'
     }),
-    new Block('text', text, {
+    new TextBlock(text, {
         styles: {
             fontSize: '1.2rem',
             lineHeight: '1.5',
@@ -34,7 +34,7 @@ export const model = [
             color: 'blue'
         }
     }), ,
-    new Block('columns', [
+    new ColumnsBlock([
         "Visual Studio Code — редактор исходного кода ",
         " разработанный Microsoft для Windows, Linux и macOS.",
         " Позиционируется как «лёгкий» редактор кода для кроссплатформенной разработки веб- и облачных приложений."
