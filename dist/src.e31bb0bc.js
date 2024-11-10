@@ -340,57 +340,16 @@ module.exports = reloadCSS;
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"templates.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.templates = void 0;
-var _utils = require("./utils");
-function title(block) {
-  var _block$options = block.options,
-    _block$options$tag = _block$options.tag,
-    tag = _block$options$tag === void 0 ? 'h1' : _block$options$tag,
-    styles = _block$options.styles;
-  return (0, _utils.row)((0, _utils.col)("  <".concat(tag, ">").concat(block.value, "</").concat(tag, ">")), (0, _utils.css)(styles));
-}
-function text(block) {
-  return (0, _utils.row)((0, _utils.col)("    <p>".concat(block.value, "</p>")), (0, _utils.css)(block.options.styles));
-}
-function columns(block) {
-  var html = block.value.map(_utils.col);
-  return (0, _utils.row)(" ".concat(html.join('')), (0, _utils.css)(block.options.styles));
-}
-function image(block) {
-  var _block$options2 = block.options,
-    _block$options2$alt = _block$options2.alt,
-    alt = _block$options2$alt === void 0 ? '' : _block$options2$alt,
-    styles = _block$options2.styles,
-    is = _block$options2.imageStyle;
-  return (0, _utils.row)("<img  src=\"".concat(block.value, "\" alt=\"").concat(alt, "\" style=\"").concat((0, _utils.css)(is), "\"/>"), (0, _utils.css)(styles));
-}
-var templates = exports.templates = {
-  text: text,
-  title: title,
-  columns: columns,
-  image: image
-};
-},{"./utils":"utils.js"}],"index.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _model = require("./model");
 require("./styles/main.css");
-var _templates = require("./templates");
-var site = document.querySelector('#site');
+var $site = document.querySelector('#site');
 _model.model.forEach(function (block) {
-  console.log(block);
-  var toHTML = _templates.templates[block.type];
-  if (toHTML) {
-    site.insertAdjacentHTML('beforeEnd', toHTML(block));
-  }
+  $site.insertAdjacentHTML('beforeEnd', block.toHTML());
 });
-},{"./model":"model.js","./styles/main.css":"styles/main.css","./templates":"templates.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./model":"model.js","./styles/main.css":"styles/main.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
