@@ -119,6 +119,29 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"assets/image.png":[function(require,module,exports) {
 module.exports = "/image.90ac9039.png";
+},{}],"utils.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.col = col;
+exports.css = css;
+exports.row = row;
+function row(content) {
+  var styles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  return "<div class=\"row\" style = \"".concat(styles, "\">").concat(content, "</div>");
+}
+function col(content) {
+  return "<div class=\"col-sm\">".concat(content, "</div>");
+}
+function css() {
+  var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var toString = function toString(key) {
+    return "".concat(key, ": ").concat(styles[key]);
+  };
+  return Object.keys(styles).map(toString).join(';');
+}
 },{}],"classes/blocks.js":[function(require,module,exports) {
 "use strict";
 
@@ -126,7 +149,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.TitleBlock = exports.TextBlock = exports.ImageBlock = exports.ColumnsBlock = void 0;
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+var _utils = require("../utils");
 function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
 function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
 function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
@@ -134,24 +157,42 @@ function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.
 function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-var Block = /*#__PURE__*/_createClass(function Block(type, value, options) {
-  _classCallCheck(this, Block);
-  this.type = type;
-  this.value = value;
-  this.options = options;
-});
+var Block = /*#__PURE__*/function () {
+  function Block(type, value, options) {
+    _classCallCheck(this, Block);
+    this.type = type;
+    this.value = value;
+    this.options = options;
+  }
+  return _createClass(Block, [{
+    key: "toHTML",
+    value: function toHTML() {
+      throw new Error('Метод toHTML должен быть реализован ');
+    }
+  }]);
+}();
 var TitleBlock = exports.TitleBlock = /*#__PURE__*/function (_Block) {
   function TitleBlock(value, options) {
     _classCallCheck(this, TitleBlock);
     return _callSuper(this, TitleBlock, ['title', value, options]);
   }
   _inherits(TitleBlock, _Block);
-  return _createClass(TitleBlock);
+  return _createClass(TitleBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      var _this$options = this.options,
+        _this$options$tag = _this$options.tag,
+        tag = _this$options$tag === void 0 ? 'h1' : _this$options$tag,
+        styles = _this$options.styles;
+      return (0, _utils.row)((0, _utils.col)("  <".concat(tag, ">").concat(this.value, "</").concat(tag, ">")), (0, _utils.css)(styles));
+    }
+  }]);
 }(Block);
 var ImageBlock = exports.ImageBlock = /*#__PURE__*/function (_Block2) {
   function ImageBlock(value, options) {
@@ -159,7 +200,17 @@ var ImageBlock = exports.ImageBlock = /*#__PURE__*/function (_Block2) {
     return _callSuper(this, ImageBlock, ['image', value, options]);
   }
   _inherits(ImageBlock, _Block2);
-  return _createClass(ImageBlock);
+  return _createClass(ImageBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      var _this$options2 = this.options,
+        _this$options2$alt = _this$options2.alt,
+        alt = _this$options2$alt === void 0 ? '' : _this$options2$alt,
+        styles = _this$options2.styles,
+        is = _this$options2.imageStyle;
+      return (0, _utils.row)("<img  src=\"".concat(this.value, "\" alt=\"").concat(alt, "\" style=\"").concat((0, _utils.css)(is), "\"/>"), (0, _utils.css)(styles));
+    }
+  }]);
 }(Block);
 var ColumnsBlock = exports.ColumnsBlock = /*#__PURE__*/function (_Block3) {
   function ColumnsBlock(value, options) {
@@ -167,7 +218,13 @@ var ColumnsBlock = exports.ColumnsBlock = /*#__PURE__*/function (_Block3) {
     return _callSuper(this, ColumnsBlock, ['columns', value, options]);
   }
   _inherits(ColumnsBlock, _Block3);
-  return _createClass(ColumnsBlock);
+  return _createClass(ColumnsBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      var html = this.value.map(_utils.col);
+      return (0, _utils.row)(" ".concat(html.join('')), (0, _utils.css)(this.options.styles));
+    }
+  }]);
 }(Block);
 var TextBlock = exports.TextBlock = /*#__PURE__*/function (_Block4) {
   function TextBlock(value, options) {
@@ -175,9 +232,14 @@ var TextBlock = exports.TextBlock = /*#__PURE__*/function (_Block4) {
     return _callSuper(this, TextBlock, ['text', value, options]);
   }
   _inherits(TextBlock, _Block4);
-  return _createClass(TextBlock);
+  return _createClass(TextBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      return (0, _utils.row)((0, _utils.col)("    <p>".concat(this.value, "</p>")), (0, _utils.css)(this.options.styles));
+    }
+  }]);
 }(Block);
-},{}],"model.js":[function(require,module,exports) {
+},{"../utils":"utils.js"}],"model.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -278,30 +340,7 @@ module.exports = reloadCSS;
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"utils.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.col = col;
-exports.css = css;
-exports.row = row;
-function row(content) {
-  var styles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  return "<div class=\"row\" style = \"".concat(styles, "\">").concat(content, "</div>");
-}
-function col(content) {
-  return "<div class=\"col-sm\">".concat(content, "</div>");
-}
-function css() {
-  var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var toString = function toString(key) {
-    return "".concat(key, ": ").concat(styles[key]);
-  };
-  return Object.keys(styles).map(toString).join(';');
-}
-},{}],"templates.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"templates.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -376,7 +415,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49793" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53839" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
