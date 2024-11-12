@@ -117,14 +117,41 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"classes/sidebar.js":[function(require,module,exports) {
+})({"utils.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.block = block;
+exports.col = col;
+exports.css = css;
+exports.row = row;
+function row(content) {
+  var styles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  return "<div class=\"row\" style = \"".concat(styles, "\">").concat(content, "</div>");
+}
+function col(content) {
+  return "<div class=\"col-sm\">".concat(content, "</div>");
+}
+function css() {
+  var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var toString = function toString(key) {
+    return "".concat(key, ": ").concat(styles[key]);
+  };
+  return Object.keys(styles).map(toString).join(';');
+}
+function block(type) {
+  return "\n    <form name='".concat(type, "'>\n        <h5>").concat(type, "</h5>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"value\" />\n             </div>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"styles\" placeholder=\"styles\" />\n             </div>\n             <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n    ");
+}
+},{}],"classes/sidebar.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Sidebar = void 0;
-exports.block = block;
+var _utils = require("../utils");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -145,14 +172,11 @@ var Sidebar = exports.Sidebar = /*#__PURE__*/function () {
   }, {
     key: "template",
     get: function get() {
-      return [block('text'), block('title')].join('');
+      return [(0, _utils.block)('text'), (0, _utils.block)('title')].join('');
     }
   }]);
 }();
-function block(type) {
-  return "\n    <form name='".concat(type, "'>\n        <h5>").concat(type, "</h5>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"value\" />\n             </div>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"styles\" placeholder=\"styles\" />\n             </div>\n             <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n    ");
-}
-},{}],"classes/site.js":[function(require,module,exports) {
+},{"../utils":"utils.js"}],"classes/site.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -182,29 +206,6 @@ var Site = exports.Site = /*#__PURE__*/function () {
 }();
 },{}],"assets/image.png":[function(require,module,exports) {
 module.exports = "/image.90ac9039.png";
-},{}],"utils.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.col = col;
-exports.css = css;
-exports.row = row;
-function row(content) {
-  var styles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  return "<div class=\"row\" style = \"".concat(styles, "\">").concat(content, "</div>");
-}
-function col(content) {
-  return "<div class=\"col-sm\">".concat(content, "</div>");
-}
-function css() {
-  var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var toString = function toString(key) {
-    return "".concat(key, ": ").concat(styles[key]);
-  };
-  return Object.keys(styles).map(toString).join(';');
-}
 },{}],"classes/blocks.js":[function(require,module,exports) {
 "use strict";
 
