@@ -142,7 +142,7 @@ function css() {
   return Object.keys(styles).map(toString).join(';');
 }
 function block(type) {
-  return "\n    <form name='".concat(type, "'>\n        <h5>").concat(type, "</h5>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"value\" />\n             </div>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"styles\" placeholder=\"styles\" />\n             </div>\n             <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n    ");
+  return "\n    <form name='".concat(type, "'>\n        <h5>").concat(type, "</h5>\n            <div class=\"form-group\">\n                <input   class=\"form-control form-control-sm\" name=\"value\" placeholder=\"value\" />\n             </div>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"styles\" placeholder=\"styles\" />\n             </div>\n             <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n    ");
 }
 },{}],"classes/sidebar.js":[function(require,module,exports) {
 "use strict";
@@ -168,11 +168,21 @@ var Sidebar = exports.Sidebar = /*#__PURE__*/function () {
     key: "init",
     value: function init() {
       this.$el.insertAdjacentHTML('afterbegin', this.template);
+      this.$el.addEventListener('submit', this.add);
     }
   }, {
     key: "template",
     get: function get() {
       return [(0, _utils.block)('text'), (0, _utils.block)('title')].join('');
+    }
+  }, {
+    key: "add",
+    value: function add(event) {
+      event.preventDefault();
+      var type = event.target.name;
+      var value = event.target.value.value;
+      var styles = event.target.styles.value;
+      debugger;
     }
   }]);
 }();
