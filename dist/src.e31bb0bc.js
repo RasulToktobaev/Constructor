@@ -164,9 +164,8 @@ function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), 
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var Block = /*#__PURE__*/function () {
-  function Block(type, value, options) {
+  function Block(value, options) {
     _classCallCheck(this, Block);
-    this.type = type;
     this.value = value;
     this.options = options;
   }
@@ -180,7 +179,7 @@ var Block = /*#__PURE__*/function () {
 var TitleBlock = exports.TitleBlock = /*#__PURE__*/function (_Block) {
   function TitleBlock(value, options) {
     _classCallCheck(this, TitleBlock);
-    return _callSuper(this, TitleBlock, ['title', value, options]);
+    return _callSuper(this, TitleBlock, [value, options]);
   }
   _inherits(TitleBlock, _Block);
   return _createClass(TitleBlock, [{
@@ -197,7 +196,7 @@ var TitleBlock = exports.TitleBlock = /*#__PURE__*/function (_Block) {
 var ImageBlock = exports.ImageBlock = /*#__PURE__*/function (_Block2) {
   function ImageBlock(value, options) {
     _classCallCheck(this, ImageBlock);
-    return _callSuper(this, ImageBlock, ['image', value, options]);
+    return _callSuper(this, ImageBlock, [value, options]);
   }
   _inherits(ImageBlock, _Block2);
   return _createClass(ImageBlock, [{
@@ -215,7 +214,7 @@ var ImageBlock = exports.ImageBlock = /*#__PURE__*/function (_Block2) {
 var ColumnsBlock = exports.ColumnsBlock = /*#__PURE__*/function (_Block3) {
   function ColumnsBlock(value, options) {
     _classCallCheck(this, ColumnsBlock);
-    return _callSuper(this, ColumnsBlock, ['columns', value, options]);
+    return _callSuper(this, ColumnsBlock, [value, options]);
   }
   _inherits(ColumnsBlock, _Block3);
   return _createClass(ColumnsBlock, [{
@@ -229,7 +228,7 @@ var ColumnsBlock = exports.ColumnsBlock = /*#__PURE__*/function (_Block3) {
 var TextBlock = exports.TextBlock = /*#__PURE__*/function (_Block4) {
   function TextBlock(value, options) {
     _classCallCheck(this, TextBlock);
-    return _callSuper(this, TextBlock, ['text', value, options]);
+    return _callSuper(this, TextBlock, [value, options]);
   }
   _inherits(TextBlock, _Block4);
   return _createClass(TextBlock, [{
@@ -374,7 +373,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53839" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57557" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
