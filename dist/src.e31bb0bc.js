@@ -117,7 +117,42 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"classes/site.js":[function(require,module,exports) {
+})({"classes/sidebar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Sidebar = void 0;
+exports.block = block;
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var Sidebar = exports.Sidebar = /*#__PURE__*/function () {
+  function Sidebar(selector) {
+    _classCallCheck(this, Sidebar);
+    this.$el = document.querySelector(selector);
+    this.init();
+  }
+  return _createClass(Sidebar, [{
+    key: "init",
+    value: function init() {
+      this.$el.insertAdjacentHTML('afterbegin', this.template);
+    }
+  }, {
+    key: "template",
+    get: function get() {
+      return '<h1>Template</h1>';
+    }
+  }]);
+}();
+function block(type) {
+  return "\n    <form name='".concat(type, "'>\n        <h5>").concat(type, "</h5>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"value\" />\n             </div>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"styles\" placeholder=\"styles\" />\n             </div>\n             <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n\n    <hr />\n    ");
+}
+},{}],"classes/site.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -370,12 +405,14 @@ module.hot.accept(reloadCSS);
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
+var _sidebar = require("./classes/sidebar");
 var _site = require("./classes/site");
 var _model = require("./model");
 require("./styles/main.css");
 var site = new _site.Site('#site');
 site.render(_model.model);
-},{"./classes/site":"classes/site.js","./model":"model.js","./styles/main.css":"styles/main.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var sidebar = new _sidebar.Sidebar('#panel');
+},{"./classes/sidebar":"classes/sidebar.js","./classes/site":"classes/site.js","./model":"model.js","./styles/main.css":"styles/main.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
