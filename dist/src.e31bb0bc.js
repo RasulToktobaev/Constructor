@@ -145,12 +145,12 @@ var Sidebar = exports.Sidebar = /*#__PURE__*/function () {
   }, {
     key: "template",
     get: function get() {
-      return '<h1>Template</h1>';
+      return [block('text'), block('title')].join('');
     }
   }]);
 }();
 function block(type) {
-  return "\n    <form name='".concat(type, "'>\n        <h5>").concat(type, "</h5>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"value\" />\n             </div>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"styles\" placeholder=\"styles\" />\n             </div>\n             <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n\n    <hr />\n    ");
+  return "\n    <form name='".concat(type, "'>\n        <h5>").concat(type, "</h5>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"value\" placeholder=\"value\" />\n             </div>\n            <div class=\"form-group\">\n                <input class=\"form-control form-control-sm\" name=\"styles\" placeholder=\"styles\" />\n             </div>\n             <button type=\"submit\" class=\"btn btn-primary btn-sm\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C</button>\n    </form>\n    <hr />\n    ");
 }
 },{}],"classes/site.js":[function(require,module,exports) {
 "use strict";

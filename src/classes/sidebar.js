@@ -9,7 +9,10 @@ export class Sidebar {
     }
 
     get template() {
-        return '<h1>Template</h1>'
+        return [
+            block('text'),
+            block('title')
+        ].join('')
     }
 }
 
@@ -25,7 +28,6 @@ export function block(type) {
              </div>
              <button type="submit" class="btn btn-primary btn-sm">Добавить</button>
     </form>
-
     <hr />
     `
 }
