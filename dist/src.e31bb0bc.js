@@ -182,7 +182,6 @@ var Sidebar = exports.Sidebar = /*#__PURE__*/function () {
       var type = event.target.name;
       var value = event.target.value.value;
       var styles = event.target.styles.value;
-      debugger;
     }
   }]);
 }();
