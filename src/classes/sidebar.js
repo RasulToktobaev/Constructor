@@ -27,13 +27,12 @@ export class Sidebar {
         const value = event.target.value.value
         const styles = event.target.styles.value
 
-        let newBlock
+        const newBlock = type === 'text' ? new TextBlock(value, { styles }) : new TitleBlock(value, { styles })
 
-        if (type === 'text') {
-            newBlock = new TextBlock(value, { styles })
-        } else {
-            newBlock = new TitleBlock(value, { styles })
-        }
+
+
+        console.log(newBlock);
+
 
 
     }
