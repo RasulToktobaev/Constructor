@@ -2,14 +2,15 @@ import { block } from '../utils'
 import { TextBlock, TitleBlock } from './blocks'
 
 export class Sidebar {
-    constructor(selector) {
+    constructor(selector, updateCallback) {
         this.$el = document.querySelector(selector)
+        this.update = updateCallback
         this.init()
     }
 
     init() {
         this.$el.insertAdjacentHTML('afterbegin', this.template)
-        this.$el.addEventListener('submit', this.add)
+        this.$el.addEventListener('submit', this.add.bind(this))
     }
 
     get template() {
@@ -31,7 +32,7 @@ export class Sidebar {
 
 
 
-        console.log(newBlock);
+        this.update(newBlock);
 
 
 
