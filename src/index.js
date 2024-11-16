@@ -8,7 +8,10 @@ const site = new Site('#site');
 
 site.render(model)
 
-const sidebar = new Sidebar('#panel')
+const sidebar = new Sidebar('#panel', newBlock => {
+    model.push(new Block)
+    site.render(model)
+})
 
 
 
