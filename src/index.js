@@ -9,7 +9,7 @@ const site = new Site('#site');
 site.render(model)
 
 const updateCallback = newBlock => {
-    model.push(new Block)
+    model.push(newBlock)
     site.render(model)
 }
 

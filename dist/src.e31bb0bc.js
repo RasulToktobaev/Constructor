@@ -433,7 +433,7 @@ require("./styles/main.css");
 var site = new _site.Site('#site');
 site.render(_model.model);
 var updateCallback = function updateCallback(newBlock) {
-  _model.model.push(new Block());
+  _model.model.push(newBlock);
   site.render(_model.model);
 };
 new _sidebar.Sidebar('#panel', updateCallback);
