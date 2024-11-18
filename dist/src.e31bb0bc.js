@@ -136,6 +136,7 @@ function col(content) {
 }
 function css() {
   var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  if (typeof styles == 'string') return styles;
   var toString = function toString(key) {
     return "".concat(key, ": ").concat(styles[key]);
   };
