@@ -256,16 +256,17 @@ function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), 
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var Sidebar = exports.Sidebar = /*#__PURE__*/function () {
-  function Sidebar(selector) {
+  function Sidebar(selector, updateCallback) {
     _classCallCheck(this, Sidebar);
     this.$el = document.querySelector(selector);
+    this.update = updateCallback;
     this.init();
   }
   return _createClass(Sidebar, [{
     key: "init",
     value: function init() {
       this.$el.insertAdjacentHTML('afterbegin', this.template);
-      this.$el.addEventListener('submit', this.add);
+      this.$el.addEventListener('submit', this.add.bind(this));
     }
   }, {
     key: "template",
@@ -284,7 +285,9 @@ var Sidebar = exports.Sidebar = /*#__PURE__*/function () {
       }) : new _blocks.TitleBlock(value, {
         styles: styles
       });
-      console.log(newBlock);
+      this.update(newBlock);
+      event.target.value.value = '';
+      event.target.styles.value = '';
     }
   }]);
 }();
@@ -310,6 +313,7 @@ var Site = exports.Site = /*#__PURE__*/function () {
     key: "render",
     value: function render(model) {
       var _this = this;
+      this.$el.innerHTML = '';
       model.forEach(function (block) {
         _this.$el.insertAdjacentHTML('beforeEnd', block.toHTML());
       });
@@ -428,7 +432,11 @@ var _model = require("./model");
 require("./styles/main.css");
 var site = new _site.Site('#site');
 site.render(_model.model);
-var sidebar = new _sidebar.Sidebar('#panel');
+var updateCallback = function updateCallback(newBlock) {
+  _model.model.push(new Block());
+  site.render(_model.model);
+};
+new _sidebar.Sidebar('#panel', updateCallback);
 },{"./classes/sidebar":"classes/sidebar.js","./classes/site":"classes/site.js","./model":"model.js","./styles/main.css":"styles/main.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -454,7 +462,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57420" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59839" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

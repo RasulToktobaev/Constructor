@@ -8,6 +8,5 @@ export class Site {
         model.forEach(block => {
             this.$el.insertAdjacentHTML('beforeEnd', block.toHTML())
         })
-
     }
 }
